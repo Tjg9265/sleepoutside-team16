@@ -1,19 +1,19 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
-// Render the cart contents dynamically
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const itemsArray = Array.isArray(cartItems) ? cartItems : [cartItems];
   const htmlItems = itemsArray.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  // Attach remove listeners to each "X" button
+
   document.querySelectorAll(".cart-card__remove").forEach((btn) => {
     btn.addEventListener("click", removeItemFromCart);
   });
 }
 
-// Template for each cart item, including a remove button
+
 function cartItemTemplate(item) {
   return `
     <li class="cart-card divider">
@@ -31,7 +31,7 @@ function cartItemTemplate(item) {
   `;
 }
 
-// Remove item from cart and re-render
+
 function removeItemFromCart(event) {
   const productId = event.target.dataset.id;
   let cart = getLocalStorage("so-cart");
@@ -42,5 +42,5 @@ function removeItemFromCart(event) {
   renderCartContents();
 }
 
-// Initial render
+
 renderCartContents();
