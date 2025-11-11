@@ -1,3 +1,8 @@
+import Alert from './alert.js';
+
+const alert = new Alert();
+alert.loadAlerts();
+
 import ProductList from "./ProductList.mjs";
 import ProductData from "./ProductData.mjs";
 
