@@ -7,7 +7,7 @@ export default class Alert {
       const alerts = await response.json();
       this.displayAlerts(alerts);
     } catch (err) {
-      console.error('Error loading alerts:', err);
+      //console.error('Error loading alerts:', err);
     }
   }
 
@@ -17,7 +17,7 @@ export default class Alert {
     const section = document.createElement('section');
     section.classList.add('alert-list');
 
-    alerts.forEach(alert => {
+    alerts.forEach((alert) => {
       const p = document.createElement('p');
       p.textContent = alert.message;
       p.style.backgroundColor = alert.background;
@@ -29,5 +29,5 @@ export default class Alert {
   }
 }
 
-const alert = new Alert();
+const alertManager = new Alert();
 alert.loadAlerts();
