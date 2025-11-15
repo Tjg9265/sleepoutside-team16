@@ -30,4 +30,5 @@ export default class Alert {
 }
 
 const alertManager = new Alert();
-alert.loadAlerts();
+alertManager.loadAlerts();
+
