@@ -39,7 +39,7 @@ export function renderWithTemplate(template, parentElement, data, callback  ) {
   if(callback) {
     callback(data);
   }  
-  parentElement.insertAdjacenthtml("afterbegin",template);
+  parentElement.insertAdjacentHTML("afterbegin",template);
 }
 
 export async function loadTemplate(path){
