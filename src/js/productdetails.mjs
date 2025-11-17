@@ -9,7 +9,7 @@ export default class ProductDetails {
 
   async init() {
     try {
-      // Fetch product details
+      // Fetch product details, comment for testing purposes
       this.product = await this.dataSource.findProductById(this.productId);
 
       
