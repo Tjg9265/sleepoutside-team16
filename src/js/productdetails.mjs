@@ -9,17 +9,15 @@ export default class ProductDetails {
 
   async init() {
     try {
-      // Fetch product details
+      // find the product by ID
       this.product = await this.dataSource.findProductById(this.productId);
 
-      
+      // Render product details on the page
       this.renderProductDetails();
 
-      
-      const button = document.getElementById('addToCart');
-      if (button) {
-        button.addEventListener('click', this.addProductToCart.bind(this));
-      }
+      // add event listener to "Add to Cart" button
+      document.getElementById('addToCart')
+        .addEventListener('click', this.addProductToCart.bind(this));
     } catch (error) {
       console.error('Error al inicializar el producto:', error);
     }
@@ -30,36 +28,26 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    
-    const nameEl = document.querySelector('h2.divider');
-    if (nameEl) nameEl.textContent = this.product.Name;
+    // name of the product
+    document.querySelector('.product-detail__name').textContent = this.product.Name;
 
-    
-    const descEl = document.querySelector('.product__description');
-    if (descEl) descEl.innerHTML = this.product.DescriptionHtmlSimple;
+    // Description HTML
+    document.querySelector('.product-detail__description').innerHTML = this.product.DescriptionHtmlSimple;
 
-    
-    const priceEl = document.querySelector('.product-card__price');
-    if (priceEl) priceEl.textContent = `$${this.product.FinalPrice}`;
+    // final price
+    document.querySelector('.product-detail__price').textContent = `$${this.product.FinalPrice}`;
 
-    
-    const colorEl = document.querySelector('.product__color');
-    if (colorEl) {
-      const color = this.product.Colors?.[0]?.ColorName || 'N/A';
-      colorEl.textContent = color;
-    }
+    // Color 
+    const color = this.product.Colors?.[0]?.ColorName || 'N/A';
+    document.querySelector('.product-detail__color').textContent = color;
 
-   
-    const imageEl = document.querySelector('img.divider');
-    if (imageEl) {
-      imageEl.src = this.product.Images.PrimaryLarge;
-      imageEl.alt = this.product.Name;
-    }
+    // Product Image
+    const imageElement = document.querySelector('.product-detail__image img');
+    imageElement.src = this.product.Image;
+    imageElement.alt = this.product.Name;
 
-    
+    // update "Add to Cart" button data-id attribute
     const button = document.getElementById('addToCart');
-    if (button) {
-      button.setAttribute('data-id', this.product.Id);
-    }
+    button.setAttribute('data-id', this.product.Id);
   }
 }
