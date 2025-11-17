@@ -259,23 +259,23 @@ button {
   margin-bottom: 5%;
 }
 
-
 .category-card {
   flex: 1 1 200px;
   max-width: 250px;
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   text-align: center;
   overflow: hidden;
 }
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
 
 .category-card a {
   display: flex;
@@ -286,13 +286,11 @@ button {
   color: #333;
 }
 
-
 .category-card img {
   width: 100px;
   height: auto;
   margin-bottom: 1rem;
 }
-
 
 .category-card div {
   font-size: 1.2rem;
@@ -303,7 +301,6 @@ button {
 .Top-Products {
   text-transform: capitalize;
 }
-
 
 @media screen and (min-width: 500px) {
   body {
@@ -319,7 +316,6 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
-  
 }
 @media (max-width: 768px) {
   .categorys-section {
