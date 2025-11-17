@@ -20,7 +20,7 @@ function cartItemTemplate(item) {
     '\'>✖</span>' +
     '<a href=\'#\' class=\'cart-card__image\'>' +
     '<img src=\'' +
-    item.Image +
+    item.Images.PrimarySmall +
     '\' alt=\'' +
     item.Name +
     '\' />' +

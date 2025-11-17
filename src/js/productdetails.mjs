@@ -9,15 +9,17 @@ export default class ProductDetails {
 
   async init() {
     try {
-      // find the product by ID
+      // Buscar el producto por ID
       this.product = await this.dataSource.findProductById(this.productId);
 
-      // Render product details on the page
+      // Renderizar los detalles del producto
       this.renderProductDetails();
 
-      // add event listener to "Add to Cart" button
-      document.getElementById('addToCart')
-        .addEventListener('click', this.addProductToCart.bind(this));
+      // Agregar listener al botón "Add to Cart"
+      const button = document.getElementById('addToCart');
+      if (button) {
+        button.addEventListener('click', this.addProductToCart.bind(this));
+      }
     } catch (error) {
       console.error('Error al inicializar el producto:', error);
     }
@@ -28,26 +30,36 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    // name of the product
-    document.querySelector('.product-detail__name').textContent = this.product.Name;
+    // Nombre del producto (usando el <h2 class="divider">)
+    const nameEl = document.querySelector('h2.divider');
+    if (nameEl) nameEl.textContent = this.product.Name;
 
-    // Description HTML
-    document.querySelector('.product-detail__description').innerHTML = this.product.DescriptionHtmlSimple;
+    // Descripción del producto
+    const descEl = document.querySelector('.product__description');
+    if (descEl) descEl.innerHTML = this.product.DescriptionHtmlSimple;
 
-    // final price
-    document.querySelector('.product-detail__price').textContent = `$${this.product.FinalPrice}`;
+    // Precio final
+    const priceEl = document.querySelector('.product-card__price');
+    if (priceEl) priceEl.textContent = `$${this.product.FinalPrice}`;
 
-    // Color 
-    const color = this.product.Colors?.[0]?.ColorName || 'N/A';
-    document.querySelector('.product-detail__color').textContent = color;
+    // Color
+    const colorEl = document.querySelector('.product__color');
+    if (colorEl) {
+      const color = this.product.Colors?.[0]?.ColorName || 'N/A';
+      colorEl.textContent = color;
+    }
 
-    // Product Image
-    const imageElement = document.querySelector('.product-detail__image img');
-    imageElement.src = this.product.Image;
-    imageElement.alt = this.product.Name;
+    // Imagen del producto
+    const imageEl = document.querySelector('img.divider');
+    if (imageEl) {
+      imageEl.src = this.product.Images.PrimaryLarge;
+      imageEl.alt = this.product.Name;
+    }
 
-    // update "Add to Cart" button data-id attribute
+    // Actualizar el atributo data-id del botón
     const button = document.getElementById('addToCart');
-    button.setAttribute('data-id', this.product.Id);
+    if (button) {
+      button.setAttribute('data-id', this.product.Id);
+    }
   }
 }
