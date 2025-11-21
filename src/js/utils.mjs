@@ -48,6 +48,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 export function renderWithTemplate(template, parentElement, data, callback) {
   if (callback) {
     callback(data);
+<<<<<<< HEAD
   }
 
   if (!parentElement) {
@@ -57,6 +58,10 @@ export function renderWithTemplate(template, parentElement, data, callback) {
 
   // FIXED CAPITALIZATION ERROR – must be insertAdjacentHTML
   parentElement.insertAdjacentHTML("afterbegin", template);
+=======
+  }  
+  parentElement.insertAdjacentHTML("afterbegin",template);
+>>>>>>> 13622b669c73b08d456b93d797363472ddeb1b3f
 }
 
 export function animateCartIcon() {
