@@ -1,6 +1,4 @@
 import { setLocalStorage } from './utils.mjs';
-import { animateCartIcon } from './utils.mjs';
-
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -27,7 +25,6 @@ export default class ProductDetails {
 
   addProductToCart() {
     setLocalStorage('so-cart', this.product);
-    animateCartIcon();
   }
 
   renderProductDetails() {
